@@ -3,63 +3,82 @@ package example.supercalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
+        if(savedInstanceState == null)  {
+            logLifeCycle("First start.");
+        }
+        else    {
+            logLifeCycle("Another start.");
+        }
 
-    public void onClick1(View view)  {
-
-    }
-    public void onClick2(View view)  {
-
-    }
-    public void onClick3(View view)  {
-
-    }
-    public void onClick4(View view)  {
-
-    }
-    public void onClick5(View view)  {
-
-    }
-    public void onClick6(View view)  {
-
-    }
-    public void onClick7(View view)  {
+        Button button8 = findViewById(R.id.button8);
+//        button8.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(MainActivity.this, "onClick8", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        Button button9 = findViewById(R.id.button9);
+//        button9.setOnClickListener(v ->
+//                Toast.makeText(MainActivity.this, "onClick9", Toast.LENGTH_SHORT).show());
 
     }
-    public void onClick8(View view)  {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        logLifeCycle("onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        logLifeCycle("onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        logLifeCycle("onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        logLifeCycle("onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        logLifeCycle("onDestroy");
+    }
+
+    // For example.
+    private void logLifeCycle(String log)   {
+        Toast.makeText(this, log, Toast.LENGTH_SHORT).show();
+        Log.d("MainActivity", log);
 
     }
-    public void onClick9(View view)  {
 
-    }
-    public void onClick0(View view)  {
 
-    }
-    public void onClickDot(View view)  {
 
-    }
-    public void onClickDivision(View view)  {
 
-    }
-    public void onClickMultiply(View view)  {
 
-    }
-    public void onClickPlus(View view)  {
-
-    }
-    public void onClickMinus(View view)  {
-
-    }
-    public void onClickEqual(View view)  {
+    @Override
+    public void onClick(View view) {
 
     }
 }
