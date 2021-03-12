@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6E6E6E">
+    android:background="@drawable/bg_image2">
 
     <TextView
         android:id="@+id/resultField"
         android:layout_width="600dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
+        android:textSize="48sp"
         android:background="@color/result_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +75,18 @@
         app:layout_constraintTop_toBottomOf="@+id/resultField"
         app:layout_constraintHorizontal_chainStyle="packed"
         />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="104dp"
+        android:backgroundTint="#AA1C1C"
+        android:text="C"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button4"

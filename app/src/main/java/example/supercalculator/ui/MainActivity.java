@@ -3,11 +3,11 @@ package example.supercalculator.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import example.supercalculator.controller.CalculatorController;
+import example.supercalculator.controller.Operations;
 
 import example.supercalculator.R;
 
@@ -23,11 +23,19 @@ import example.supercalculator.R;
  */
 
 public class MainActivity extends AppCompatActivity {
+    // Reject to use '.' twice.
+    private boolean flagDot = false;
+
+    // todo: remove leading zero before append any other charachters
+    private boolean flagZero = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Create new objects.
+        CalculatorController calcController = new CalculatorController();
 
         // Find all buttons.
         Button button0 = findViewById(R.id.button0);
@@ -46,72 +54,87 @@ public class MainActivity extends AppCompatActivity {
         Button buttonPlus = findViewById(R.id.buttonPlus);
         Button buttonMinus = findViewById(R.id.buttonMinus);
         Button buttonEqual = findViewById(R.id.buttonEqual);
+        Button buttonReset = findViewById(R.id.buttonReset);
 
         // Find textBox.
         TextView resultField = findViewById(R.id.resultField);
+        resultField.setText("0");
 
         button0.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+                resultField.append("0");
         });
 
         button1.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("1");
         });
 
         button2.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("2");
         });
 
         button3.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("3");
         });
 
         button4.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("4");
         });
 
         button5.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("5");
         });
 
         button6.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("6");
         });
 
         button7.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("7");
         });
 
         button8.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("8");
         });
 
         button9.setOnClickListener(view -> {
-            // todo: add a handler for NUMBER button click
+            resultField.append("9");
         });
 
         buttonDot.setOnClickListener(view -> {
-            // todo: add a handler for DOT button click
+            if(!flagDot)    {
+                resultField.append(".");
+                flagDot = !flagDot;
+            }
         });
 
         buttonDivision.setOnClickListener(view -> {
-            // todo: add a handler for OPERATOR button click
+            calcController.addOperator(resultField.getText().toString(), Operations.DIV);
+            resultField.setText(String.format("%f", calcController.result));
         });
 
         buttonMultiply.setOnClickListener(view -> {
-            // todo: add a handler for OPERATOR button click
+            calcController.addOperator(resultField.getText().toString(), Operations.MULT);
+            resultField.setText(String.format("%f", calcController.result));
         });
 
         buttonPlus.setOnClickListener(view -> {
-            // todo: add a handler for OPERATOR button click
+            calcController.addOperator(resultField.getText().toString(), Operations.ADD);
+            resultField.setText(String.format("%f", calcController.result));
         });
 
         buttonMinus.setOnClickListener(view -> {
-            // todo: add a handler for OPERATOR button click
+            calcController.addOperator(resultField.getText().toString(), Operations.SUB);
+            resultField.setText(String.format("%f", calcController.result));
         });
 
         buttonEqual.setOnClickListener(view -> {
-            // todo: add a handler for RESULT button click
+            calcController.addOperator(resultField.getText().toString(), Operations.EQUAL);
+            resultField.setText(String.format("%f", calcController.result));
+        });
+
+        buttonReset.setOnClickListener(view -> {
+            calcController.resetAll();
+            resultField.setText("0");
         });
 
 
