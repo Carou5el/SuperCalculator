@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     // Reject to use '.' twice.
     private boolean flagDot = false;
 
+    StringBuilder resultString = new StringBuilder();
+
     // todo: remove leading zero before append any other charachters
     private boolean flagZero = false;
 
@@ -57,59 +59,79 @@ public class MainActivity extends AppCompatActivity {
         Button buttonReset = findViewById(R.id.buttonReset);
 
         // Find textBox.
+        // Set text in this textBox as "0".
         TextView resultField = findViewById(R.id.resultField);
-        resultField.setText("0");
+        resultField.setText(R.string.Button0);
 
+        // Set click listeners on all buttons.
         button0.setOnClickListener(view -> {
-                resultField.append("0");
+            resultString.append(R.string.Button0);
+            resultField.setText(resultString.toString());
+
         });
 
         button1.setOnClickListener(view -> {
-            resultField.append("1");
+            resultString.append(R.string.Button1);
+            resultField.setText(resultString.toString());
         });
 
         button2.setOnClickListener(view -> {
-            resultField.append("2");
+            resultString.append(R.string.Button2);
+            resultField.setText(resultString.toString());
+
         });
 
         button3.setOnClickListener(view -> {
-            resultField.append("3");
+            resultString.append(R.string.Button3);
+            resultField.setText(resultString.toString());
+
         });
 
         button4.setOnClickListener(view -> {
-            resultField.append("4");
+            resultString.append(R.string.Button4);
+            resultField.setText(resultString.toString());
+
         });
 
         button5.setOnClickListener(view -> {
-            resultField.append("5");
+            resultString.append(R.string.Button5);
         });
 
         button6.setOnClickListener(view -> {
-            resultField.append("6");
+            resultString.append(R.string.Button6);
+            resultField.setText(resultString.toString());
+
         });
 
         button7.setOnClickListener(view -> {
-            resultField.append("7");
+            resultString.append(R.string.Button7);
+            resultField.setText(resultString.toString());
+
         });
 
         button8.setOnClickListener(view -> {
-            resultField.append("8");
+            resultString.append(R.string.Button8);
+            resultField.setText(resultString.toString());
+
         });
 
         button9.setOnClickListener(view -> {
-            resultField.append("9");
+            resultString.append(R.string.Button9);
+            resultField.setText(resultString.toString());
+
         });
 
         buttonDot.setOnClickListener(view -> {
             if(!flagDot)    {
-                resultField.append(".");
+                resultString.append(R.string.ButtonDot);
+                resultField.setText(resultString.toString());
                 flagDot = !flagDot;
             }
         });
 
         buttonDivision.setOnClickListener(view -> {
             calcController.addOperator(resultField.getText().toString(), Operations.DIV);
-            resultField.setText(String.format("%f", calcController.result));
+            resultField.setText(String.format("%d", calcController.result));
         });
 
         buttonMultiply.setOnClickListener(view -> {
@@ -134,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
         buttonReset.setOnClickListener(view -> {
             calcController.resetAll();
-            resultField.setText("0");
         });
 
 
