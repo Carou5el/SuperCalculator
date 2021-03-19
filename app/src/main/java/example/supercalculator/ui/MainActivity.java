@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         super.onCreate(savedInstanceState);
-        setTheme(getAppTheme(?????));
+        setTheme(getAppTheme(R.style.Theme_SuperCalculator));
         setContentView(R.layout.activity_main);
         initThemeChooser();
         // Create new objects.
@@ -222,15 +222,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initChooser()   {
-        initRadio
+    private void initThemeChooser()   {
+        initRadioButton(findViewById(R.id.themeLightTheme), lightThemeSwitch);
+        initRadioButton(findViewById(R.id.themeDarkTheme), darkThemeSwitch);
     }
 
     private void initRadioButton(View button, final int codeStyle)  {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAppTheme();
+                setAppTheme(codeStyle);
                 recreate();
             }
         });
@@ -244,27 +245,25 @@ public class MainActivity extends AppCompatActivity {
         // Работаем через специальный класс сохранения и чтения настроек
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
         //Прочитать тему, если настройка не найдена - взять по умолчанию
-        return sharedPref.getInt(AppTheme, codeStyle);
+        return sharedPref.getInt(appTheme, codeStyle);
     }
 
     private void setAppTheme(int codeStyle) {
         SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
         // Настройки сохраняются посредством специального класса editor.
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(AppTheme, codeStyle);
+        editor.putInt(appTheme, codeStyle);
         editor.apply();
     }
 
     private int codeStyleToStyleId(int codeStyle){
         switch(codeStyle){
-            case AppThemeCodeStyle:
-                return R.style.AppTheme;
-            case AppThemeLightCodeStyle:
-                return R.style.AppThemeLight;
-            case AppThemeDarkCodeStyle:
-                return R.style.AppThemeDark;
+            case 0:
+                return R.style.Theme_SuperCalculator;
+            case 1:
+                return R.style.Theme_SuperCalculatorDark;
             default:
-                return R.style.MyCoolStyle;
+                return R.style.Theme_SuperCalculator;
         }
     }
 
