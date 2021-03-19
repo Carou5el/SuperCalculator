@@ -265,4 +265,24 @@
         app:layout_constraintStart_toEndOf="@id/buttonEqual"
         app:layout_constraintTop_toBottomOf="@+id/buttonPlus" />
 
+    <RadioGroup
+        android:id="@+id/themeSwitcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/themeLightTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lighttheme" />
+
+        <RadioButton
+            android:id="@+id/themeDarkTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/darktheme" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

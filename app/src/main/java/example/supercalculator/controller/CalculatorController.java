@@ -16,56 +16,67 @@ public class CalculatorController {
 
     public double result = 0;
 
-    // Which operator is used to.
-    // false - operator1
-    // true - operator2
-    boolean flagToOperator = false;
-
+    /*
+        Which of the operand is used to.
+        false - operand1
+        true - operand2
+     */
+    boolean isSetOperand1 = false;
+    boolean isSetOperator1 = false;
 
     // Methods.
     public void resetAll()  {
         operator1 = 0;
         operator2 = 0;
         result = 0;
-        flagToOperator = false;
+        isSetOperand1 = false;
+        isSetOperator1 = false;
     }
 
-    public void addOperator(String inputString, Operations operator)   {
+    public void addOperand(Operations operand, StringBuilder stringBuilder) {
+        /*
+        * In case of 'flagOperand' we use input argument 'operand':
+        *
+        * false - define 'operand1'
+        * true - define 'operand2'
+        *
+        * */
+        if (!isSetOperand1) {
 
-        if(!flagToOperator)  {
-            operator1 = Double.parseDouble(inputString);
-            operand1 = operator;
-            flagToOperator = !flagToOperator;
-        }
-        else    {
-            operator2 = Double.parseDouble(inputString);
-            operand2 = operator;
-            sendToCalculatorClass(operator1, operator2, operand1, operand2);
-        }
+            this.operator1 = parsingOperator(stringBuilder);
+            this.operand1 = operand;
+            isSetOperand1 = true;
+            isSetOperator1 = true;
 
-    }
-
-    private void sendToCalculatorClass (double num1, double num2, Operations op1, Operations op2)   {
-
-        if(op2 == Operations.EQUAL) {
-            Task(op1);
-            flagToOperator = false;
-        }
-        else    {
-            Task(op1);
-            operator1 = result;
-            operand1 = op2;
-            flagToOperator = true;
-
+        } else {
+            this.operator2 = parsingOperator(stringBuilder);
+            this.operand2 = operand;
+            // todo: call to private method to prepare call to Calculator class.
+            Execute(operator1, operator2, operand1, operand2);
         }
     }
 
-    private void Task(Operations op1) {
+    private double parsingOperator(StringBuilder stringBuilder) {
+        double result;
+        /*
+        * In case of exception value = 0.0 has been returned.
+        * */
+        try {
+            result = Double.parseDouble(stringBuilder.toString());
+        } catch (NumberFormatException e) {
+            result = 0.0;
+        }
+
+        return result;
+    }
+
+    private void Execute(double operator1, double operator2, Operations operand1, Operations operand2)   {
+
         CalculatorClass calculatorClass = new CalculatorClass();
         calculatorClass.setOperator1(operator1);
         calculatorClass.setOperator2(operator2);
 
-        switch(op1) {
+        switch(operand1) {
             case DIV:
                 calculatorClass.division();
                 break;
@@ -84,5 +95,16 @@ public class CalculatorController {
         }
 
         result = calculatorClass.getResult();
+
+        if(operand2 == Operations.EQUAL) {
+            isSetOperator1 = false;
+            isSetOperand1 = false;
+        }
+        else    {
+            operator1 = result;
+            operand1 = operand2;
+            isSetOperand1 = true;
+            isSetOperator1 = true;
+        }
     }
 }

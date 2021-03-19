@@ -10,4 +10,5 @@
     <color name="buttons_operators_bg">#4CAF50</color>
     <color name="buttons_numbers_bg">#3F51B5</color>
     <color name="result_field">#D5D5D5</color>
+    <color name="dark_buttons_numbers_bg">#970B0B</color>>
 </resources>

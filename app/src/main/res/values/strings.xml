@@ -16,4 +16,7 @@
     <string name="ButtonMinus">-</string>
     <string name="ButtonMultiply">*</string>
     <string name="ButtonDivision">/</string>
+    <string name="ThemeSwitch">Dark theme</string>
+    <string name="lighttheme">LightTheme</string>
+    <string name="darktheme">DarkTheme</string>
 </resources>

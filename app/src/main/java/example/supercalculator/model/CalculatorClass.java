@@ -20,8 +20,8 @@ public class CalculatorClass {
         this.operator2 = operator2;
     }
 
-    public void setResult(double result) {
-        this.result = result;
+    public double getResult() {
+        return result;
     }
 
     public void division() {
@@ -43,9 +43,5 @@ public class CalculatorClass {
 
     public void minus() {
         result = operator1 - operator2;
-    }
-
-    public double getResult() {
-        return result;
     }
 }
