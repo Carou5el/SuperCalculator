@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button_any">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+        <item name="colorPrimary">@color/buttons_numbers_bg</item>
+        <item name="colorPrimaryVariant">@color/buttons_numbers_bg</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>
