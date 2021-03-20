@@ -14,6 +14,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import example.supercalculator.controller.CalculatorController;
 import example.supercalculator.controller.Operations;
 
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button1.setOnClickListener(view -> {
-            int d = 0;
             resultString.append(getString(R.string.Button1));
             resultField.setText(resultString.toString());
         });
@@ -186,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
             calcController.addOperand(Operations.EQUAL, resultString);
             resultString.delete(0, resultField.length());
 
-            resultField.setText(String.format("%f", calcController.result));
+            resultField.setText(String.format(Locale.getDefault(),"%f", calcController.result));
+
             calcController.resetAll();
             flagDot = false;
             resultString.delete(0, resultField.length());
@@ -198,28 +200,6 @@ public class MainActivity extends AppCompatActivity {
             resultString.delete(0, resultField.length());
             resultField.setText(R.string.Button0);
         });
-
-
-
-//        if(savedInstanceState == null)  {
-//            logLifeCycle("First start.");
-//        }
-//        else    {
-//            logLifeCycle("Another start.");
-//        }
-
-//        Button button8 = findViewById(R.id.button8);
-//        button8.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(MainActivity.this, "onClick8", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        Button button9 = findViewById(R.id.button9);
-//        button9.setOnClickListener(v ->
-//                Toast.makeText(MainActivity.this, "onClick9", Toast.LENGTH_SHORT).show());
-
     }
 
     private void initThemeChooser()   {
