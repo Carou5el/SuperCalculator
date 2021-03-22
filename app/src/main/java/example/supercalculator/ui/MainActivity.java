@@ -252,46 +252,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-//        outState.putBoolean("themeSwitchState", themeSwitch.hasTransientState());
     }
-
-    //    /**
-//     * Method for logging of application current status (onCreate, onResume, onStart,...).
-//     * Also push a toast notification.
-//     * @param log - string to push in toast.
-//     */
-//    private void logLifeCycle(String log)   {
-//        Toast.makeText(this, log, Toast.LENGTH_SHORT).show();
-//        Log.d("MainActivity", log);
-//    }
-//
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        logLifeCycle("onStart");
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        logLifeCycle("onResume");
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        logLifeCycle("onPause");
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        logLifeCycle("onStop");
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        logLifeCycle("onDestroy");
-//    }
 }
