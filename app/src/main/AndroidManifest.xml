@@ -9,11 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperCalculator">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Принимаем URI с началом "example://intent" -->
+                <data android:scheme="example"
+                    android:host="intent" />
+            </intent-filter>
+            <intent-filter android:label="example.supercalculator.ui.MainActivity">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Принимаем URI с началом "example://intent" -->
+                <data android:scheme="example"
+                    android:host="intent" />
+
             </intent-filter>
         </activity>
     </application>
